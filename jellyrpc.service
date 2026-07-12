@@ -1,0 +1,19 @@
+[Unit]
+Description=Jellyfin -> Discord Rich Presence bridge
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/jellyrpc.env
+ExecStart=/usr/local/bin/jellyrpc
+Restart=on-failure
+RestartSec=5
+# Hardening: drop everything this doesn't need
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

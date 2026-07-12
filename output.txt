@@ -1,0 +1,2 @@
+2026/07/12 15:05:46 config: DISCORD_TOKEN is required
+exit status 1
