@@ -125,7 +125,7 @@ Leave it unset if you don't want a badge.
 ## Build & run
 
 ```bash
-go build -o jellyrpc .
+go build -o jellyrpc ./cmd/jellyrpc
 
 export DISCORD_TOKEN="..."
 export JELLYFIN_URL="https://jellyfin.example.com"
@@ -134,6 +134,33 @@ export JELLYFIN_USER_ID="..."
 
 ./jellyrpc
 ```
+
+## Build release packages
+
+The repository includes a Makefile that builds binaries for Linux, macOS, and Windows and packages each one with the service file and the example environment file.
+
+```bash
+make release
+```
+
+This creates archives in `dist/packages/`:
+
+- `jellyrpc-linux-amd64.tar.gz`
+- `jellyrpc-darwin-amd64.tar.gz`
+- `jellyrpc-windows-amd64.zip`
+
+You can also build targets individually:
+
+```bash
+make build-linux
+make build-darwin
+make build-windows
+make package-linux
+make package-darwin
+make package-windows
+```
+
+Use `ARCH=arm64` if you want ARM64 builds instead of the default `amd64`.
 
 ## Running as a systemd service
 
